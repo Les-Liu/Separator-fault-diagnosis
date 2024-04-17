@@ -183,11 +183,11 @@ if __name__ == '__main__':
     # Start Training the Model
     test_number = 1;train_score = 0;test_score = 0;model_score = 0
     for i in range(test_number):
-        filePath = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\训练数据\FaultDataset.xlsx"
-        savePicturePath = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\图片\PNG\DNN热力图.png"
+        filePath = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Train Data/FaultDataset 50snr.xlsx"
+        savePicturePath = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Figure/PNG/50snr/DNN_Heat_MAP.png"
         model = MLP(filePath=filePath, savePicturePath=savePicturePath)
         model.DrawHeatMap()
-        saveModelFile = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\故障诊断模型\DNN模型\DNN_model.h5"
+        saveModelFile = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Model/50snr/DNN_model.h5"
         callbacks = [
             tf.keras.callbacks.ModelCheckpoint(saveModelFile, monitor='val_accuracy', verbose=1,
                                                    save_best_only=True,save_weights_only=False,mode='max')
@@ -213,8 +213,8 @@ if __name__ == '__main__':
     print("Classification Accuracy on the Test Dataset:", '%.2f%%' % (test_score * 100/test_number))
 
     # Read New Faulty Condition Dataset for Fault Diagnosis
-    test_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\测试数据\NewFaultDataset.xlsx"
-    file_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\诊断结果\DNNResult.xlsx"
+    test_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Test Data/NewFaultDataset.xlsx"
+    file_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Diagnostic Results/50snr/DNNResult.xlsx"
     model.FaultDiagnosis(test_path,saveModelFile,file_path)
     
 
