@@ -195,12 +195,12 @@ if __name__ == '__main__':
     # Start Training the Model
     test_number = 1;train_score = 0;test_score = 0;model_score = 0
     for i in range(test_number):
-        filePath = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\训练数据\FaultDataset.xlsx"
+        filePath = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Train Data/FaultDataset 50snr.xlsx"
         classificationNumber = 14
         resnet = ResNetModel(filePath=filePath,classificationNumber=classificationNumber)
         model = models.Model(inputs=resnet.input,outputs=resnet.output)
         optimizer = optimizers.Adam(learning_rate=0.001)
-        saveModelFile = "E:/博士资料/本地论文/自己写的论文/第三篇论文/论文/故障诊断模型/ResNet模型/ResNet_model.h5"
+        saveModelFile = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Model/50snr/ResNet_model.h5"
         callbacks = [
         # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy',patience=10,min_delta=0.001,mode='max'),
         tf.keras.callbacks.ModelCheckpoint(saveModelFile, monitor='val_accuracy', verbose=1,
@@ -227,6 +227,6 @@ if __name__ == '__main__':
     print("Classification Accuracy on the test Dataset:", '%.2f%%' % (test_score * 100/test_number))
 
     # 读取新的故障工况数据集，进行故障诊断
-    test_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\测试数据\NewFaultDataset.xlsx"
-    file_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\诊断结果\RESNETResult.xlsx"
+    test_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Test Data/NewFaultDataset.xlsx"
+    file_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Diagnostic Results/50snr/RESNETResult.xlsx"
     resnet.FaultDiagnosis(test_path,saveModelFile,file_path)
