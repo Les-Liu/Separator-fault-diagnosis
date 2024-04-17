@@ -152,8 +152,8 @@ if __name__ == '__main__':
     # Start Training the Model
     test_number = 1;train_score = 0;test_score = 0;model_score = 0
     for i in range(test_number):
-        filePath = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\训练数据\FaultDataset.xlsx"
-        saveModelFile = "E:/博士资料/本地论文/自己写的论文/第三篇论文/论文/故障诊断模型/CNN模型/CNN_model.h5"
+        filePath = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Train Data/FaultDataset 50snr.xlsx"
+        saveModelFile = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Model/50snr/CNN_model.h5"
         model = CNN(filePath=filePath)
         callbacks = [
             # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=10, min_delta=0.001, mode='max'),
@@ -179,6 +179,6 @@ if __name__ == '__main__':
     print("Classification Accuracy on the Test Dataset:", '%.2f%%' % (test_score * 100/test_number))
 
     # Read New Faulty Condition Dataset for Fault Diagnosis
-    test_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\测试数据\NewFaultDataset.xlsx"
-    file_path = "E:\博士资料\本地论文\自己写的论文\第三篇论文\论文\数据\诊断结果\CNNResult.xlsx"
+    test_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Test Data/NewFaultDataset.xlsx"
+    file_path = "F:/博士资料/本地论文/自己写的论文/第三篇论文/论文/Data/Diagnostic Results/50snr/CNNResult.xlsx"
     model.FaultDiagnosis(test_path,saveModelFile,file_path)
